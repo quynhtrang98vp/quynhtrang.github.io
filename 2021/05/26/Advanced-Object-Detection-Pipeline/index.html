@@ -96,11 +96,19 @@
 	            <a href="#s1">Categories</a>
 	                    <ul class="submenu">
 	                        <li>
-	                        
+	                        <a class="category-link" href="/categories/computer-vision/">computer vision</a>
 	                    </ul>
 	        </li>
 	        
 	        <!-- archives  归档   --> 
+	        
+	        <li class="active">
+	            <a href="#s1">Archives</a>
+	                    <ul class="submenu">
+	                        <li>
+	                        <a class="archive-link" href="/archives/2021/05/">May 2021</a>
+	                    </ul>
+	        </li>
 	        
 	        
 		        <!-- Pages 自定义   -->
@@ -151,23 +159,23 @@
 </nav>
 
         <div id="main" >
-            <div class ="post_page_title_img" style="height: 25rem;background-image: url();background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url(img/background.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
                 <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >Advanced Object Detection Pipeline</h2></a>
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                <h2 id="Cac-phuong-phap-nang-cao-hieu-suat-cua-object-detection"><a href="#Cac-phuong-phap-nang-cao-hieu-suat-cua-object-detection" class="headerlink" title="Các phương pháp nâng cao hiệu suất của object detection"></a>Các phương pháp nâng cao hiệu suất của object detection</h2><p>Cùng với sự phát triển của Deep Learning các mô hình object detection cũng đã phát triển và hình thành theo 2 hướng chính:</br></p>
-</li>Họ mô hình RNN, Fast RCNN, Faster RCNN là những mô hình two stage dùng để  phát hiện vị trí và phân loại các đối tượng. Độ chính xác khá cao nhưng tốc độ lại chậm
-</li>Họ mô hình YOLO,SSD là những mô hình one stage có khả năng phát hiện đối tượng real time tuy nhiên độ chính xác thấp hơn. Các version sau của YOLO là YOLOv4 và YOLOv5 có độ chính xác tương đương với họ RNN và tốc độ cũng được cải thiện đáng kể so với các version trước đó.
+                <h2 id="Cac-phuong-phap-nang-cao-hieu-suat-cua-object-detection"><a href="#Cac-phuong-phap-nang-cao-hieu-suat-cua-object-detection" class="headerlink" title="Các phương pháp nâng cao hiệu suất của object detection"></a>Các phương pháp nâng cao hiệu suất của object detection</h2><p align:justify>Cùng với sự phát triển của Deep Learning các mô hình object detection cũng đã phát triển và hình thành theo 2 hướng chính:</br></p>
+<li>Họ mô hình RNN, Fast RCNN, Faster RCNN là những mô hình two stage dùng để  phát hiện vị trí và phân loại các đối tượng. Độ chính xác khá cao nhưng tốc độ lại chậm</li></br>
+<li>Họ mô hình YOLO,SSD là những mô hình one stage có khả năng phát hiện đối tượng real time tuy nhiên độ chính xác thấp hơn. Các version sau của YOLO là YOLOv4 và YOLOv5 có độ chính xác tương đương với họ RNN và tốc độ cũng được cải thiện đáng kể so với các version trước đó.</li></br>
 Gần đây, VinBigdata đã đưa ra bài toán nhận phát hiện đối tượng trên ảnh y tế  gồm 14 loại bệnh khác nhau. Cuộc thi được tổ chức trên Kaggle với sự tham gia của nhiều người và tổ chức đến từ các quốc gia trên thế giới. Nó đã đặt ra vấn đề làm sao để nâng cao hiệu quả của object detection đối với các bài toán tương tự trong tương lai.
 Một số phương pháp đã được đưa ra và nâng điểm của những người tham gia cuộc thi và có khả năng ứng dụng cao đối với các bài toàn tương tự. Một số phương pháp tiêu biểu có thể kể đến như:
-</li>Chọn baseline đơn giản
-</li>Tăng độ phân giải hình ảnh khi train
-</li>Loại bỏ một class khi train
-</li>Weight box fusion
-</li>Kết hợp Yolov5 và EfficientNet
+<li>Chọn Baseline đơn giản</li>
+<li>Tăng độ phân giải hình ảnh khi train</li>
+<li>Loại bỏ một class khi train</li>
+<li>Weight box fusion</li>
+<li>Kết hợp Yolov5 và EfficientNet</li>
 
-<h2 id="Chon-baseline-don-gian"><a href="#Chon-baseline-don-gian" class="headerlink" title="Chọn baseline đơn giản"></a>Chọn baseline đơn giản</h2><h2 id="Tang-do-phan-giai-hinh-anh-khi-train"><a href="#Tang-do-phan-giai-hinh-anh-khi-train" class="headerlink" title="Tăng độ phân giải hình ảnh khi train"></a>Tăng độ phân giải hình ảnh khi train</h2><h2 id="Loai-bo-mot-class-khi-train"><a href="#Loai-bo-mot-class-khi-train" class="headerlink" title="Loại bỏ một class khi train"></a>Loại bỏ một class khi train</h2><h2 id="Weight-box-fussion"><a href="#Weight-box-fussion" class="headerlink" title="Weight box fussion"></a>Weight box fussion</h2><h2 id="Ket-hop-Yolov5-va-EfficentNet"><a href="#Ket-hop-Yolov5-va-EfficentNet" class="headerlink" title="Kết hợp Yolov5 và EfficentNet"></a>Kết hợp Yolov5 và EfficentNet</h2><h2 id="Tai-Lieu-Tham-Khao"><a href="#Tai-Lieu-Tham-Khao" class="headerlink" title="Tài Liệu Tham Khảo"></a>Tài Liệu Tham Khảo</h2>
+<h3 id="Chon-baseline-don-gian"><a href="#Chon-baseline-don-gian" class="headerlink" title="Chọn baseline đơn giản"></a>Chọn baseline đơn giản</h3><h3 id="Tang-do-phan-giai-hinh-anh-khi-train"><a href="#Tang-do-phan-giai-hinh-anh-khi-train" class="headerlink" title="Tăng độ phân giải hình ảnh khi train"></a>Tăng độ phân giải hình ảnh khi train</h3><h3 id="Loai-bo-mot-class-khi-train"><a href="#Loai-bo-mot-class-khi-train" class="headerlink" title="Loại bỏ một class khi train"></a>Loại bỏ một class khi train</h3><h3 id="Weight-box-fussion"><a href="#Weight-box-fussion" class="headerlink" title="Weight box fussion"></a>Weight box fussion</h3><h3 id="Ket-hop-Yolov5-va-EfficentNet"><a href="#Ket-hop-Yolov5-va-EfficentNet" class="headerlink" title="Kết hợp Yolov5 và EfficentNet"></a>Kết hợp Yolov5 và EfficentNet</h3><h2 id="Tai-Lieu-Tham-Khao"><a href="#Tai-Lieu-Tham-Khao" class="headerlink" title="Tài Liệu Tham Khảo"></a>Tài Liệu Tham Khảo</h2>
             </div>
 
             <!-- Post Comments -->
