@@ -159,7 +159,7 @@
 </nav>
 
         <div id="main" >
-            <div class ="post_page_title_img" style="height: 25rem;background-image: url(images/computer_vision/object_detection_pipeline.jpeg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url(public/images/computer_vision/object_detection_pipeline.jpeg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
                 <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >Advanced Object Detection Pipeline</h2></a>
             </div>
             <!-- Post -->
@@ -177,9 +177,9 @@
 
 <h3 id="Chon-baseline-don-gian"><a href="#Chon-baseline-don-gian" class="headerlink" title="Chọn baseline đơn giản"></a>Chọn baseline đơn giản</h3><p>Tại sao cần chọn baseline đơn giản?</br></p>
 <p align:justify>Khi bắt đầu rất nhiều người chọn mô hình phức tạp nhất. Vì theo nghiên cứu cho thấy rằng càng mô hình càng sâu thì khả năng học tập càng tốt. Tuy nhiên, không nên đi qua vào các mô hình phức tạp vì nó có khả năng làm bạn thất vọng và rời bỏ dự án Machine Learning của mình. Mô hình được sử  dụng phổ biến hiện nay là Yolo với cho kết quả chính xác và khả năng real time trong thời gian thực. Yolov5 là sự lựa chọn phù hợp cho các bài toán object detection.</p>
-<img src="images/computer_vision/yolov5_map.png">
+<img src="public/images/computer_vision/yolov5_map.png">
 
-<h3 id="Tang-do-phan-giai-hinh-anh-khi-train"><a href="#Tang-do-phan-giai-hinh-anh-khi-train" class="headerlink" title="Tăng độ phân giải hình ảnh khi train"></a>Tăng độ phân giải hình ảnh khi train</h3><p align:justify>Một minh chứng cho thấy rằng khi tăng độ phân giải hình ảnh lên thì model được đào tạo sẽ cho kết quả tốt hơn. Mặt khác, không nên tăng độ phân giải lên quá cao nó có thể làm giảm đi độ chính xác của model vì model classification với mạng EfficientNet đã chứng minh răng khi tối ưu cả độ sâu của mạng, độ phân giải hình ảnh và chiều rộng đầu vào thì model mới cho kết quả chỉnh xác nhất. Tăng độ phân giải của hình ảnh có thể tăng hiệu quả của model nhưng nó sẽ làm qúa trình training và predict trở nên chậm hơn ảnh hưởng tới trải nghiệm của người dùng.</p>
+<h3 id="Tang-do-phan-giai-hinh-anh-khi-train"><a href="#Tang-do-phan-giai-hinh-anh-khi-train" class="headerlink" title="Tăng độ phân giải hình ảnh khi train"></a>Tăng độ phân giải hình ảnh khi train</h3><p align:justify>Một minh chứng cho thấy rằng khi tăng độ phân giải hình ảnh lên thì model được đào tạo sẽ cho kết quả tốt hơn. Mặt khác, không nên tăng độ phân giải lên quá cao nó có thể làm giảm đi độ chính xác của model vì model classification với mạng EfficientNet đã chứng minh răng khi tối ưu cả độ sâu của mạng, độ phân giải hình ảnh và chiều rộng đầu vào thì model mới cho kết quả chính xác nhất. Tăng độ phân giải của hình ảnh có thể tăng hiệu quả của model nhưng nó sẽ làm quá trình training và predict trở nên chậm hơn ảnh hưởng tới trải nghiệm của người dùng.</p>
 
 <h3 id="Loai-bo-mot-class-khi-train"><a href="#Loai-bo-mot-class-khi-train" class="headerlink" title="Loại bỏ một class khi train"></a>Loại bỏ một class khi train</h3><p align:justify>Tùy vào từng bài toán mà có thể xem xét loại bỏ class hay không. Giả sử như bài toán mà VinBigdata đưa ra thay vì train 14 classes thì có thể train 13 classes bị bệnh. Khi predict nếu 1 label mà không thuộc vào 13 classes kia thì nó chỉ có thể ở class thứ 14. Việc training cũng trở nên nhanh chóng hơn vì quá trình học đã chỉ cần học 13 classes thay vì 14 classes như trước đó.</p>
 
