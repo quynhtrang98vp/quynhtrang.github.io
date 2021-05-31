@@ -177,7 +177,7 @@
 
 <h3 id="Chon-baseline-don-gian"><a href="#Chon-baseline-don-gian" class="headerlink" title="Chọn baseline đơn giản"></a>Chọn baseline đơn giản</h3><p>Tại sao cần chọn baseline đơn giản?</br></p>
 <p align:justify>Khi bắt đầu rất nhiều người chọn mô hình phức tạp nhất. Vì theo nghiên cứu cho thấy rằng càng mô hình càng sâu thì khả năng học tập càng tốt. Tuy nhiên, không nên đi qua vào các mô hình phức tạp vì nó có khả năng làm bạn thất vọng và rời bỏ dự án Machine Learning của mình. Mô hình được sử  dụng phổ biến hiện nay là Yolo với cho kết quả chính xác và khả năng real time trong thời gian thực. Yolov5 là sự lựa chọn phù hợp cho các bài toán object detection.</p>
-<img src="/images/computer_vision/yolov5_map.png"/>
+<img src="/images/computer_vision/yolov5_map.png" class="center"/>
 
 <h3 id="Tang-do-phan-giai-hinh-anh-khi-train"><a href="#Tang-do-phan-giai-hinh-anh-khi-train" class="headerlink" title="Tăng độ phân giải hình ảnh khi train"></a>Tăng độ phân giải hình ảnh khi train</h3><p align:justify>Một minh chứng cho thấy rằng khi tăng độ phân giải hình ảnh lên thì model được đào tạo sẽ cho kết quả tốt hơn. Mặt khác, không nên tăng độ phân giải lên quá cao nó có thể làm giảm đi độ chính xác của model vì model classification với mạng EfficientNet đã chứng minh răng khi tối ưu cả độ sâu của mạng, độ phân giải hình ảnh và chiều rộng đầu vào thì model mới cho kết quả chính xác nhất. Tăng độ phân giải của hình ảnh có thể tăng hiệu quả của model nhưng nó sẽ làm quá trình training và predict trở nên chậm hơn ảnh hưởng tới trải nghiệm của người dùng.</p>
 
@@ -186,37 +186,38 @@
 <h3 id="Weight-box-fusion"><a href="#Weight-box-fusion" class="headerlink" title="Weight box fusion"></a>Weight box fusion</h3><p align:justify>Weight box fusion là một phương pháp lấy ra box từ tập hợp các box được ra bởi model. Ý tưởng chọn ra box có confidence cao nhất trong tập hợp box từ model đưa ra. Sau đó, sắp xếp các box còn lại theo thứ tự giảm dần của confidence. Tạo danh sách lưu các box phù hợp được chọn từ list box trên bằng cách sử dụng ngưỡng. Cuối cùng sử dụng công thức để tính ra tọa độ của tất cả các box đã được lưu trong list trên.</p>
 
 <p align:justify>Bước 1: Tạo một list box B chứa tất cả các nhãn được sắp xếp theo confidence giảm dần. Điểm tin cậy được chọn là điểm có confidence cao nhất.</p>
-<img src="/images/computer_vision/buoc_1.png"/>
+<img src="/images/computer_vision/buoc_1.png" class="center"/>
 <p align:justify>conf là accuracy của model object detection trước đó trả về. x1,x2,y1,y2 là tọa độ của box của object.</p>
-<p align:justify>Bước 2: Tạo list L và F (F và L được khởi tạo là empty). L chứa cụm boxes và box fusion.</p>
+Bước 2: Tạo list L và F (F và L được khởi tạo là empty). L chứa cụm boxes và box fusion.</br>
 <p align:justify>List F có thể hiểu mỗi phần tử  của nó chỉ chứa duy nhất một box duy nhất, còn mỗi phần tử của List L sẽ chứa một box hoặc nhiều box. Mỗi một box ở list F sẽ tham chiếu tới cụm box ở list L tương ứng. Mỗi phần tử của box F sẽ được tính dựa trên phần tử của List L tương ứng (công thức sẽ được đề cập ở bước sau). Mỗi một box ở F đại diện cho box đầu ra của object</p>
 Bước 3: Duyệt tất cả các phần tử ở list B. Tính IOU của từng phần tử ở F so với phần tử B. Lấy IOU cao nhất.</br>
-<img src="/images/computer_vision/buoc_3_0.png"/></br>
+<img src="/images/computer_vision/buoc_3_0.png" class="center"/></br>
 Nếu IOU nhỏ hơn ngưỡng quy định  thì sẽ thêm phần tử của B vào cả list F và L.</br>
-<img src="/images/computer_vision/buoc_3_1.png"/></br>
+<img src="/images/computer_vision/buoc_3_1.png" class="center"/></br>
 Ngược lại, sẽ chỉ thêm phần tử B vào vị trí tương ứng của list L. </br>
-<img src="/images/computer_vision/buoc_3_2.png"/></br>
+<img src="/images/computer_vision/buoc_3_2.png" class="center"/></br>
 Sau đó tính lại tọa độ của phần tử tương ứng tại list F với công thức. </br>
-<img src="/images/computer_vision/buoc_3_3.png"/>
-<img src="/images/computer_vision/buoc_3_4.png"/></br>
+<img src="/images/computer_vision/buoc_3_3.png" class="center"/>
+<img src="/images/computer_vision/buoc_3_4.png" class="center"/></br>
 Bước 4: Sau khi hoàn tất quá trình trên điều chỉnh lại điểm tin cậy.</br>
-<img src="/images/computer_vision/buoc_4.png"/>
+<img src="/images/computer_vision/buoc_4.png" class="center"/>
 
 <h3 id="Ket-hop-Yolov5-va-EfficentNet"><a href="#Ket-hop-Yolov5-va-EfficentNet" class="headerlink" title="Kết hợp Yolov5 và EfficentNet"></a>Kết hợp Yolov5 và EfficentNet</h3><p align:justify>Một ứng dụng để tăng kết quả của quá trình phát hiện đối tượng đó là kết hợp mạng phân loại đối tượng và phát hiện đối tượng để nâng cao hiệu quả của object detection. Ý tưởng của bài toán này là lấy kết quả của mạng detection (Yolov5) và kết quả phân loại của mạng classification (EfficientNet) kết hợp với một ngưỡng cho trước rồi đưa ra kết quả cuối cùng.</p>
 <p align:justify>Một ví dụ tiêu biểu cho sự kết hợp trên là kết hợp Yolov5 với EfficentNet trong cuộc thi phân loại ảnh y tế của VinBigdata đưa ra đã làm tăng accuracy cho bài toán.</p>
-<img src="/images/computer_vision/vin_bigdata.jpeg"/>
-<p align:justify>Bài viết này mình sẽ không nói về kiến trúc và quá trình training Yolov5 và EfficientNet. Bạn có thể dễ dàng tìm thấy các source trên mạng để thực hiện quá trình training hoặc bạn có thể dùng link này để tham khảo Yolov5[https://www.kaggle.com/mostafaibrahim17/yolov5-vinbigdata], EfficientNet[https://www.kaggle.com/khyeh0719/pytorch-efficientnet-baseline-train-amp-aug]</p>
+<img src="/images/computer_vision/vin_bigdata.jpeg" class="center"/>
+<p align:justify>Bài viết này mình sẽ không nói về kiến trúc và quá trình training Yolov5 và EfficientNet. Bạn có thể dễ dàng tìm thấy các source trên mạng để thực hiện quá trình training hoặc bạn có thể dùng link này để tham khảo [Yolov5](https://www.kaggle.com/mostafaibrahim17/yolov5-vinbigdata), [EfficientNet](https://www.kaggle.com/khyeh0719/pytorch-efficientnet-baseline-train-amp-aug)</p>
 <p align:justify>Bài toán đưa ra gồm 14 bệnh khác nhau về phổi được chụp bằng ảnh X-quang. Sau khi đào tạo Yolov5 với 13 classes và lưu kết quả dưới dạng file csv. Trong cột predictionString kết quả trả về tương ứng là class bị bệnh (từ 0-14) và tọa độ box tương ứng của object.</p>
-<img src="/images/computer_vision/yolov5_predict.png"/>
+<img src="/images/computer_vision/yolov5_predict.png" class="center"/>
 <p align:justify>EfficientNet được đào với 2 classes khác nhau là bị bệnh và không bị bệnh. Cột target là kết uqra trả về của EfficientNet.</p>
-<img src="/images/computer_vision/efficientnet_predict.png"/>
+<img src="/images/computer_vision/efficientnet_predict.png" class="center"/>
 <p align:justify>Khởi tạo 2 ngưỡng quy định trước ví dụ low_thresh=0.08 và high_thresh=0.95. Lấy kết quả ở cột target so sánh với 2 ngưỡng trên.</p>
 TH1: Nếu target < low_thresh → không bị bệnh</br>
 TH2: Nếu low_thresh =< target < high_thresh → khả năng bị bệnh thấp</br>
 TH3: Nếu target >= high_thresh → bị bệnh</br>
-<img src="/images/computer_vision/filter_2_box.png"/>
+<img src="/images/computer_vision/filter_2_box.png" class="center"/>
 
-<h2 id="Tai-Lieu-Tham-Khao"><a href="#Tai-Lieu-Tham-Khao" class="headerlink" title="Tài Liệu Tham Khảo"></a>Tài Liệu Tham Khảo</h2>
+<h2 id="Tai-Lieu-Tham-Khao"><a href="#Tai-Lieu-Tham-Khao" class="headerlink" title="Tài Liệu Tham Khảo"></a>Tài Liệu Tham Khảo</h2><p><a target="_blank" rel="noopener" href="https://towardsdatascience.com/a-journey-of-building-an-advanced-object-detection-pipeline-doubling-yolov5s-performance-b3f1559463bf">https://towardsdatascience.com/a-journey-of-building-an-advanced-object-detection-pipeline-doubling-yolov5s-performance-b3f1559463bf</a><br><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1910.13302.pdf">https://arxiv.org/pdf/1910.13302.pdf</a><br><a target="_blank" rel="noopener" href="https://www.kaggle.com/awsaf49/vinbigdata-2-class-filter">https://www.kaggle.com/awsaf49/vinbigdata-2-class-filter</a></p>
+
             </div>
 
             <!-- Post Comments -->
