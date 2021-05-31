@@ -201,7 +201,7 @@ Ngược lại, sẽ chỉ thêm phần tử B vào vị trí tương ứng củ
 Sau đó tính lại tọa độ của phần tử tương ứng tại list F với công thức. </br>
 <img src="/images/computer_vision/buoc_3_3.png" class="center"/>
 <img src="/images/computer_vision/buoc_3_4.png" class="center"/></br>
-<p align:justify>Như đã giải thích ở trên có thể hiểu được mỗi phần tử của F là 1 box tương ứng đại diện cho 1 box hoặc 1 cụm box ở mỗi phần tử của List L tương ứng. Do đó, box của list F sẽ là box trả về sau khi thực hiện thuật toán.</p>
+<p align:justify>Như đã giải thích ở trên có thể hiểu được mỗi phần tử của F là 1 box tương ứng đại diện cho 1 box hoặc 1 cụm box ở mỗi phần tử của List L tương ứng. Do đó box của list F sẽ là box trả về sau khi thực hiện thuật toán.</p>
 Bước 4: Sau khi hoàn tất quá trình trên điều chỉnh lại điểm tin cậy.</br>
 <img src="/images/computer_vision/buoc_4.png" class="center"/></br>
 Kết quả của phương pháp WBF so với NMS và soft NMS</br>
@@ -212,6 +212,7 @@ Kết quả của phương pháp WBF so với NMS và soft NMS</br>
 <p align:justify>Một ví dụ tiêu biểu cho sự kết hợp trên là kết hợp Yolov5 với EfficentNet trong cuộc thi phân loại ảnh y tế của VinBigdata đưa ra đã làm tăng accuracy cho bài toán.</p>
 <img src="/images/computer_vision/vin_bigdata.jpeg" class="center"/>
 <p align:justify>Bài viết này mình sẽ không nói về kiến trúc và quá trình training Yolov5 và EfficientNet. Bạn có thể dễ dàng tìm thấy các source trên mạng để thực hiện quá trình training hoặc bạn có thể dùng link này để tham khảo [Yolov5](https://www.kaggle.com/mostafaibrahim17/yolov5-vinbigdata), [EfficientNet](https://www.kaggle.com/khyeh0719/pytorch-efficientnet-baseline-train-amp-aug)</p>
+[Yolov5](https://www.kaggle.com/mostafaibrahim17/yolov5-vinbigdata)
 <p align:justify>Bài toán đưa ra gồm 14 bệnh khác nhau về phổi được chụp bằng ảnh X-quang. Sau khi đào tạo Yolov5 với 13 classes và lưu kết quả dưới dạng file csv. Trong cột predictionString kết quả trả về tương ứng là class bị bệnh (từ 0-14) và tọa độ box tương ứng của object.</p>
 <img src="/images/computer_vision/yolov5_predict.png" class="center"/>
 <p align:justify>EfficientNet được đào với 2 classes khác nhau là bị bệnh và không bị bệnh. Cột target là kết uqra trả về của EfficientNet.</p>
