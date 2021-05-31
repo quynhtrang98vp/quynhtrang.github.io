@@ -96,7 +96,7 @@
 	            <a href="#s1">Categories</a>
 	                    <ul class="submenu">
 	                        <li>
-	                        <a class="category-link" href="/categories/computer-vision/">computer vision</a>
+	                        <a class="category-link" href="/categories/NLP/">NLP</a></li><li><a class="category-link" href="/categories/computer-vision/">computer vision</a>
 	                    </ul>
 	        </li>
 	        
@@ -183,24 +183,30 @@
 
 <h3 id="Loai-bo-mot-class-khi-train"><a href="#Loai-bo-mot-class-khi-train" class="headerlink" title="Loại bỏ một class khi train"></a>Loại bỏ một class khi train</h3><p align:justify>Tùy vào từng bài toán mà có thể xem xét loại bỏ class hay không. Giả sử như bài toán mà VinBigdata đưa ra thay vì train 14 classes thì có thể train 13 classes bị bệnh. Khi predict nếu 1 label mà không thuộc vào 13 classes kia thì nó chỉ có thể ở class thứ 14. Việc training cũng trở nên nhanh chóng hơn vì quá trình học đã chỉ cần học 13 classes thay vì 14 classes như trước đó.</p>
 
-<h3 id="Weight-box-fusion"><a href="#Weight-box-fusion" class="headerlink" title="Weight box fusion"></a>Weight box fusion</h3><p align:justify>Weight box fusion là một phương pháp lấy ra box từ tập hợp các box được ra bởi model. Ý tưởng chọn ra box có confidence cao nhất trong tập hợp box từ model đưa ra. Sau đó, sắp xếp các box còn lại theo thứ tự giảm dần của confidence. Tạo danh sách lưu các box phù hợp được chọn từ list box trên bằng cách sử dụng ngưỡng. Cuối cùng sử dụng công thức để tính ra tọa độ của tất cả các box đã được lưu trong list trên.</p>
-
+<h3 id="Weight-box-fusion"><a href="#Weight-box-fusion" class="headerlink" title="Weight box fusion"></a>Weight box fusion</h3><p align:justify>Phương pháp NMS trước đây đưa ra box dữ đoán bằng cách chọn ra box có độ tin cậy cao nhất làm box tin cậy. Tính IOU của các box với box tin cậy. Tạo một ngưỡng quy định trước rồi so sánh IOU tính được với ngưỡng đó, sau đó đưa ra quyết định. Tuy nhiên, cách làm như vậy box của object sẽ bị lệch nếu như mô hình đưa ra không có box nào là box trùng với object.</p>
+<p align:justify>Weight box fusion là một phương pháp lấy ra box từ tập hợp các box được ra bởi model. Ý tưởng chọn ra box có confidence cao nhất trong tập hợp box từ model đưa ra. Sau đó, sắp xếp các box còn lại theo thứ tự giảm dần của confidence. Tạo danh sách lưu các box phù hợp được chọn từ list box trên bằng cách sử dụng ngưỡng. Cuối cùng sử dụng công thức để tính ra tọa độ của tất cả các box đã được lưu trong list trên.</p>
+<img src="/images/computer_vision/WBF.png" class="center"/>
 <p align:justify>Bước 1: Tạo một list box B chứa tất cả các nhãn được sắp xếp theo confidence giảm dần. Điểm tin cậy được chọn là điểm có confidence cao nhất.</p>
 <img src="/images/computer_vision/buoc_1.png" class="center"/>
 <p align:justify>conf là accuracy của model object detection trước đó trả về. x1,x2,y1,y2 là tọa độ của box của object.</p>
 Bước 2: Tạo list L và F (F và L được khởi tạo là empty). L chứa cụm boxes và box fusion.</br>
-<p align:justify>List F có thể hiểu mỗi phần tử  của nó chỉ chứa duy nhất một box duy nhất, còn mỗi phần tử của List L sẽ chứa một box hoặc nhiều box. Mỗi một box ở list F sẽ tham chiếu tới cụm box ở list L tương ứng. Mỗi phần tử của box F sẽ được tính dựa trên phần tử của List L tương ứng (công thức sẽ được đề cập ở bước sau). Mỗi một box ở F đại diện cho box đầu ra của object</p>
+<p align:justify>List F có thể hiểu mỗi phần tử  của nó chỉ chứa duy nhất một box duy nhất, còn mỗi phần tử của List L sẽ chứa một box hoặc nhiều box. Mỗi một box ở list F sẽ tham chiếu tới cụm box ở list L tương ứng. Mỗi phần tử của box F sẽ được tính dựa trên phần tử của List L tương ứng (công thức sẽ được đề cập ở bước sau). Mỗi một box ở F đại diện cho box đầu ra của object.</p>
 Bước 3: Duyệt tất cả các phần tử ở list B. Tính IOU của từng phần tử ở F so với phần tử B. Lấy IOU cao nhất.</br>
+<p align:justify>Ban đầu khi chưa có phần tử nào ở list F và L thì phần tử đầu tiên của list B1 sẽ được thêm vào cả list F và L. Lúc này phần tử của F là F = {b1} = {f1}, L = {b1} = {l1}. Từ phần tử thứ 2 của list B trở sẽ tính IOU của các phần tử ở F với B. Ví dụ nếu list F và list L đã có 2 phần tử.</p>
 <img src="/images/computer_vision/buoc_3_0.png" class="center"/></br>
-Nếu IOU nhỏ hơn ngưỡng quy định  thì sẽ thêm phần tử của B vào cả list F và L.</br>
+Nếu IOU nhỏ hơn ngưỡng quy định thì sẽ thêm phần tử của B vào cả list F và L.</br>
 <img src="/images/computer_vision/buoc_3_1.png" class="center"/></br>
 Ngược lại, sẽ chỉ thêm phần tử B vào vị trí tương ứng của list L. </br>
 <img src="/images/computer_vision/buoc_3_2.png" class="center"/></br>
 Sau đó tính lại tọa độ của phần tử tương ứng tại list F với công thức. </br>
 <img src="/images/computer_vision/buoc_3_3.png" class="center"/>
 <img src="/images/computer_vision/buoc_3_4.png" class="center"/></br>
+<p align:justify>Như đã giải thích ở trên có thể hiểu được mỗi phần tử của F là 1 box tương ứng đại diện cho 1 box hoặc 1 cụm box ở mỗi phần tử của List L tương ứng. Do đó, box của list F sẽ là box trả về sau khi thực hiện thuật toán.</p>
 Bước 4: Sau khi hoàn tất quá trình trên điều chỉnh lại điểm tin cậy.</br>
-<img src="/images/computer_vision/buoc_4.png" class="center"/>
+<img src="/images/computer_vision/buoc_4.png" class="center"/></br>
+Kết quả của phương pháp WBF so với NMS và soft NMS</br>
+<img src="/images/computer_vision/WBF_and_NMS.png" class="center" alt="Kết quả của phương pháp WBF so với NMS và soft NMS"/>
+<img src="/images/computer_vision/demo_WBF_NMS.png" class="center" alt="Sử dụng WBF cho bài toán của VinBigdata"/>
 
 <h3 id="Ket-hop-Yolov5-va-EfficentNet"><a href="#Ket-hop-Yolov5-va-EfficentNet" class="headerlink" title="Kết hợp Yolov5 và EfficentNet"></a>Kết hợp Yolov5 và EfficentNet</h3><p align:justify>Một ứng dụng để tăng kết quả của quá trình phát hiện đối tượng đó là kết hợp mạng phân loại đối tượng và phát hiện đối tượng để nâng cao hiệu quả của object detection. Ý tưởng của bài toán này là lấy kết quả của mạng detection (Yolov5) và kết quả phân loại của mạng classification (EfficientNet) kết hợp với một ngưỡng cho trước rồi đưa ra kết quả cuối cùng.</p>
 <p align:justify>Một ví dụ tiêu biểu cho sự kết hợp trên là kết hợp Yolov5 với EfficentNet trong cuộc thi phân loại ảnh y tế của VinBigdata đưa ra đã làm tăng accuracy cho bài toán.</p>
